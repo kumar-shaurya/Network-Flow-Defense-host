@@ -4,8 +4,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 
 from api.routes import game, ml  # existing imports
+from api.routes.ml import load_model
 
 app = FastAPI(title="Network Flow Defence API")
+
+# Load ML model on startup
+load_model()
 
 # ✅ Allow CORS for frontend (during Render deployment)
 FRONTEND_ORIGIN = os.getenv("FRONTEND_ORIGIN", "*")
