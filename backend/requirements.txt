@@ -5,3 +5,5 @@ python-multipart
 numpy
 pandas
 scikit-learn
+networkx
+aiofiles
