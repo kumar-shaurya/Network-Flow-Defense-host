@@ -18,8 +18,8 @@ def load_model():
     """Load model and features on startup."""
     global MODEL, FEATURE_COLS
     try:
-        MODEL = joblib.load("backend/ml/models/rf_model.pkl")
-        with open("backend/ml/models/feature_columns.json", 'r') as f:
+        MODEL = joblib.load("ml/models/rf_model.pkl")
+        with open("ml/models/feature_columns.json", 'r') as f:
             FEATURE_COLS = json.load(f)
         print("ML model and features loaded successfully.")
     except FileNotFoundError:
