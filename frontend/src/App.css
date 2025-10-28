@@ -379,4 +379,70 @@ header {
   .modal-content h2 {
     font-size: 1.5em;
   }
-}
+
+  /* --- Extra Mobile Polish (Portrait Improvements) --- */
+  header {
+    padding: 8px 12px;
+    background-color: #2b2f36;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  .header-left .btn {
+    background-color: #3b3f45;
+    border-radius: 8px;
+  }
+
+  .score-display {
+    font-size: 0.9em;
+    color: #aaa;
+  }
+
+  .floating-controls {
+    border-radius: 14px;
+    background-color: #2e3238;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    padding: 15px;
+    margin-bottom: 5px;
+  }
+
+  .floating-controls h2 {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+  }
+
+  .floating-controls p {
+    font-size: 0.95em;
+  }
+
+  .floating-controls hr {
+    margin: 12px 0;
+    border-color: #555;
+  }
+
+  .btn {
+    padding: 12px 10px;
+    border-radius: 10px;
+    font-size: 1em;
+  }
+
+  .btn-primary {
+    background-color: #1d7efc;
+  }
+
+  .btn-warning {
+    background-color: #f9b505;
+  }
+
+  .legend li {
+    margin-bottom: 6px;
+  }
+
+  .legend-color {
+    width: 18px;
+    height: 18px;
+  }
+
+  .game-container {
+    padding-bottom: 80px;
+  }
+  }
