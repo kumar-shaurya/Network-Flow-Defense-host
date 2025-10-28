@@ -13,28 +13,32 @@ body {
     sans-serif;
   background-color: #23272a;
   margin: 0;
-  overflow: hidden; /* Prevent all scrolling on body */
+  overflow-x: hidden;
+  overflow-y: auto;
   color: #ccc;
+  height: 100%;
 }
 
 .App {
   display: grid;
-  grid-template-columns: 1fr; /* Full width */
+  grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
 }
 
 /* --- Home Screen Styles --- */
 .home-screen {
   width: 100%;
-  height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background: #23272a;
   color: white;
   text-align: center;
+  padding: 20px 0;
 }
 
 .home-content {
@@ -44,8 +48,6 @@ body {
   border-radius: 10px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
   border: 1px solid #444;
-  
-  /* --- ANIMATION --- */
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -71,8 +73,7 @@ body {
   margin-top: 20px;
 }
 
-
-/* --- Main Game Header (Dark Theme) --- */
+/* --- Main Game Header --- */
 header {
   grid-column: 1 / -1;
   background-color: #2c2f33;
@@ -81,7 +82,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* --- Better Shadow --- */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   height: 60px;
   border-bottom: 1px solid #444;
@@ -107,7 +107,6 @@ header {
   font-weight: 700;
 }
 
-
 /* --- Main Game Layout --- */
 .game-container {
   grid-column: 1 / -1;
@@ -115,11 +114,10 @@ header {
   background-color: #000;
   position: relative;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100dvh - 60px);
   min-width: 0;
   z-index: 1;
 }
-
 
 /* --- FLOATING CONTROLS STYLES --- */
 .floating-controls {
@@ -132,21 +130,14 @@ header {
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #444;
-  /* --- Better Shadow --- */
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  z-index: 20; 
+  z-index: 20;
   max-height: calc(100% - 40px);
   overflow-y: auto;
-  
-  /* --- ANIMATION --- */
-  /* Slide in 0.4s, wait 0.2s, ease-out, stay at end-state */
   animation: slideInFromRight 0.4s 0.2s ease-out backwards;
-
-  /* Hide scrollbar (Firefox) */
   scrollbar-width: none;
 }
 
-/* Hide scrollbar (Chrome, Safari, Edge) */
 .floating-controls::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -169,30 +160,27 @@ header {
   margin: 20px 0;
 }
 
-/* --- Button Styles & Animations --- */
+/* --- Button Styles --- */
 .btn {
   display: block;
   width: 100%;
   padding: 10px 15px;
   font-size: 1em;
   border: none;
-  border-radius: 6px; /* Slightly softer curve */
+  border-radius: 6px;
   cursor: pointer;
   margin-bottom: 10px;
-  /* --- Better Transition & Shadow --- */
   transition: all 0.2s ease-out;
   font-weight: 600;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover:not(:disabled) {
-  /* --- "Lift" Animation --- */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn:active:not(:disabled) {
-  /* --- "Press" Animation --- */
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -229,7 +217,6 @@ header {
   background-color: #555;
   cursor: not-allowed;
   opacity: 0.7;
-  /* Reset shadows and transforms */
   box-shadow: none;
   transform: none;
 }
@@ -252,7 +239,7 @@ header {
   border-radius: 50%;
 }
 
-/* --- Modal Styles & Animations --- */
+/* --- Modal Styles --- */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -264,8 +251,6 @@ header {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  
-  /* --- ANIMATION --- */
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -273,15 +258,12 @@ header {
   background: #36393f;
   padding: 30px;
   border-radius: 10px;
-  /* --- Better Shadow --- */
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   border: 1px solid #444;
   width: 90%;
   max-width: 400px;
   color: #fff;
-  
-  /* --- ANIMATION --- */
   animation: fadeInScaleUp 0.3s ease-out;
 }
 
@@ -293,7 +275,7 @@ header {
 
 .modal-content h3 {
   font-size: 1.5em;
-  color: #2ecc40; /* Green score */
+  color: #2ecc40;
   margin-bottom: 10px;
 }
 
@@ -312,7 +294,6 @@ header {
 .modal-buttons .btn {
   width: 100%;
 }
-
 
 /* --- Animation Definitions --- */
 @keyframes fadeIn {
@@ -333,61 +314,68 @@ header {
 /* --- Mobile Responsiveness --- */
 @media (max-width: 650px) {
 
-  /* Fixes the floating controls panel */
-  .floating-controls {
-    /* Use a percentage width, but cap it */
-    width: 90%;
-    max-width: 320px; 
-    
-    /* Reduce spacing from the edge */
-    top: 10px;
-    right: 10px;
-    
-    /* Reduce internal padding */
-    padding: 15px;
-    
-    /* Adjust max-height for new spacing */
-    max-height: calc(100% - 20px); 
+  body {
+    font-size: 14px;
   }
-  
-  /* Makes the home screen content fit better */
+
+  .floating-controls {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    max-height: 40vh;
+    overflow-y: auto;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
   .home-content {
     padding: 20px;
     width: 90%;
   }
+
   .home-content h1 {
     font-size: 2.2em;
   }
+
   .home-content p {
     font-size: 1em;
   }
+
   .btn-large {
     font-size: 1.1em;
     padding: 12px 25px;
   }
 
-  /* Makes the game header more compact */
   header {
     padding: 10px 15px;
     gap: 10px;
+    flex-wrap: wrap;
+    height: auto;
   }
+
   .header-left {
     gap: 10px;
   }
+
   .header-left .btn {
     font-size: 0.9em;
     padding: 8px 12px;
   }
+
   .score-display {
     gap: 15px;
     font-size: 0.9em;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
-  /* Makes the modal content fit better */
   .modal-content {
     width: 90%;
     padding: 20px;
   }
+
   .modal-content h2 {
     font-size: 1.5em;
   }
